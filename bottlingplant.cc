@@ -12,7 +12,7 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer,unsigned int 
 		maxStockPerFlavour(maxStockPerFlavour), timeBetweenShipments(timeBetweenShipments){
 
 		prt.print(Printer::BottlingPlant, 'S');
-		truck = new truck(prt, nameServer, this, numVendingMachines, maxStockPerFlavour);
+		truck = new Truck(prt, nameServer, *this, numVendingMachines, maxStockPerFlavour);
 
 		numBBC = prng(maxShippedPerFlavour);
 		numCCS = prng(maxShippedPerFlavour);

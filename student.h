@@ -2,10 +2,10 @@
 #define STUDENT_H
 
 class Printer;
-class NameServer;
-class WATCardOffice;
+#include "nameserver.h"
+#include "watcardoffice.h"
 #include "watcard.h"
-class VendingMachine;
+#include "vendingmachine.h"
 
 class Student {
 

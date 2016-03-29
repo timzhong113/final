@@ -19,7 +19,7 @@ void Truck::action(){
 	totalSoda = cargo[0] + cargo[1] + cargo[2] + cargo[3];
 	prt.print(Printer::Truck, 'P', totalSoda);
 
-	VendingMachine *machineList = nameServer.getMachineList();
+	VendingMachine **machineList = nameServer.getMachineList();
 
 
 	for( unsigned int i=0; i<numVendingMachines; i++ ){
@@ -30,23 +30,23 @@ void Truck::action(){
 		unsigned int notReplenished;
 
 		for( unsigned int j=0; j<4; j++ ){
-			unsigned int demand = maxStockPerFlavour - &(stock+j);  ////////////////////////////
+			unsigned int demand = maxStockPerFlavour - *(stock+j);  ////////////////////////////
 			
 			if( totalSoda == 0 ) break;
 
 			if( cargo[j] >= demand ){
-				&(stock+j) += demand;
+				*(stock+j) += demand;
 				cargo[j] -= demand;
 				totalSoda -= demand;
 			}else{
-				&(stock+j) += cargo[j];
+				*(stock+j) += cargo[j];
 				cargo[j] = 0;
 				totalSoda -= cargo[j];
 			}
-			curStock += &(stock+j);
+			curStock += *(stock+j);
 		}//for
 
-		notReplenished = maxStock-curStock
+		notReplenished = maxStock-curStock;
 		if( notReplenished != 0 ){
 			prt.print(Printer::Truck, 'U', machineList[i]->getId(), maxStock-curStock);
 		}

@@ -9,21 +9,14 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines,
 	for(  unsigned int i=0; i<numVendingMachines; i++ ){
 		machineList[i] = 0;
 	}
-	for( unsigned int j=0; j<numStudents; j++ ){
-		dtn[j] = 0;
-	}
 	prt.print(Printer::NameServer, 'S');		
-}
-
-NameServer::~NameServer(){
-	delete [] dtn;
 }
 
 void NameServer::VMregister( VendingMachine *vendingmachine ){
 
 	unsigned int posn=0;
 	for( unsigned int i=0; i<numVendingMachines; i++ ){
-		if( !machineList[i] ){
+		if( machineList[i] == 0 ){
 			machineList[i] = vendingmachine;
 			posn = i;
 			break;

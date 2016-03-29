@@ -14,7 +14,7 @@ class Truck {
   	BottlingPlant &plant;
   	unsigned int numVendingMachines;
   	unsigned int maxStockPerFlavour;
-  	int cargo[4];
+  	unsigned int cargo[4];
     unsigned int totalSoda;
 
   public:

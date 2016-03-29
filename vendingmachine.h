@@ -3,6 +3,7 @@
 
 class Printer;
 class NameServer;
+#include "watcard.h"
 
 class VendingMachine {                // general vending machine
 
