@@ -1,6 +1,6 @@
 #include "student.h"
 
-extern PRNG::prng;
+extern PRNG prng;
 
 
 Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffice, 
@@ -24,8 +24,8 @@ Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffic
 	else if(flav == 2) flavour = VendingMachine::RRB;
 	else flavour = VendingMachine::JL;
 
-	prt.print(Printer::student, 'S', flavour, maxBottles);
-	prt.print(Printer::student, 'V', vendingMachine->id);
+	prt.print(Printer::Student, 'S', flavour, maxBottles);
+	prt.print(Printer::Student, 'V', vendingMachine->id);
 
 }  // Student::constructor
 
@@ -41,20 +41,29 @@ void Student::action(){
 
 		VendingMachine::Status status = vendingMachine->buy(flavour, card);
 
-		if(card == 0) card = cardOffice.create(id, 5);  // create a new card
+		if(card == 0){
+
+			card = cardOffice.create(id, 5);  // create a new card
+			prt.print(Printer::Student, 'D');
+
+		}
 
 		if(status == VendingMachine::BUY){	// buy successfully
 
+			prt.print(Printer::Student, 'B', card->getBalance());
 			return;
 
 		}else if(status == VendingMachine::FUNDS){	// insufficient funds, add money
 
+			prt.print(Printer::Student, 't', 5);
 			cardOffice.transfer(id, 5, card);
+			prt.print(Printer::Student, 'T', card->getBalance());
 			return;
 
 		}else{	// out of stock of favourate soda, change vending machine
 
 			vendingMachine = nameServer.getMachine(id);	// get a new machine
+			prt.print(Printer::Student, 'V', vendingMachine->id);
 			return;
 
 		}

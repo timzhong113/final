@@ -11,6 +11,7 @@ class WATCard {
   	
     WATCard() { balance = 0; }	// default constructor
     addBalance(unsigned int amount) { balance += amount; }
+    unsigned int getBalance() { return balance; }
 
 };
 

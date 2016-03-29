@@ -168,6 +168,11 @@ int main( int argc, char *argv[] ) {
     for ( i = 0; i < pm.numVendingMachines; i += 1 ) {	// delete in random order
 	delete machines[ vset[ i ] ];
     } // for
+    
+    prt.print(Printer::BottlingPlant, 'F');
+    prt.print(Printer::Truck, 'F');
+    prt.print(Printer::NameServer, 'F');
+    prt.print(Printer::WATCardOffice, 'F');
 } // main
 
 // Local Variables: //

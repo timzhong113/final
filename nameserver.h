@@ -5,7 +5,7 @@ class NameServer {
 
   protected:
 
-    struct Dtn{
+    struct Distribution{
       unsigned int mid; // machine id
       bool isDistributed;  // true if the machined is already ditributed
     };
@@ -14,7 +14,7 @@ class NameServer {
   	unsigned int numVendingMachines;
   	unsigned int numStudents;
   	VendingMachine *machineList;
-    Dtn distribution[numStudents];  // distribute vending machines to students
+    Distribution dtn[numStudents];  // distribute vending machines to students
 
   public:
 
