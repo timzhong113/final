@@ -50,3 +50,4 @@ void Truck::action(){
 	}//for
 
 }
+

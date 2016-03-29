@@ -50,3 +50,4 @@ VendingMachine *NameServer::getMachine( unsigned int id ){
 VendingMachine **NameServer::getMachineList(){
 	return machineList;
 }
+

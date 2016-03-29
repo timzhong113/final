@@ -2,6 +2,8 @@
 #define VENDINGMACHINE_H
 
 
+class NameServer;
+
 class VendingMachine {                // general vending machine
 
   protected:
@@ -38,3 +40,4 @@ class VendingMachineOverCharger : public VendingMachine { // specific vending ma
 };
 
 #endif
+

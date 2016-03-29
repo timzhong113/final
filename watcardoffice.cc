@@ -26,3 +26,4 @@ void WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard &ca
 	return;
 
 }
+

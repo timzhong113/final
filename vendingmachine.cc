@@ -79,3 +79,4 @@ Status VendingMachineCardEater::buy( Flavours flavour, WATCard *&card ){
 VendingMachineOverCharger::VendingMachineOverCharger( Printer &prt, NameServer &nameServer,
 	unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour ): 
 	VendingMachine( prt, nameServer, id, sodaCost*2, maxStockPerFlavour ) {}
+

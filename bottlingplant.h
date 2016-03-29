@@ -1,6 +1,8 @@
 #ifndef BOTTLINGPLANT
 #define BOTTLINGPLANT
 
+class Truck;
+
 class BottlingPlant {
 
   protected:
@@ -26,3 +28,4 @@ class BottlingPlant {
 };
 
 #endif
+

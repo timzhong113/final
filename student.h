@@ -1,6 +1,8 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include "soda.h"
+
 class Student {
 
   protected:
@@ -27,3 +29,4 @@ class Student {
 };
 
 #endif
+

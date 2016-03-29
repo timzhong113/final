@@ -1,4 +1,5 @@
 #include "student.h"
+#include "PRNG.h"
 
 extern PRNG prng;
 
@@ -25,7 +26,7 @@ Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffic
 	else flavour = VendingMachine::JL;
 
 	prt.print(Printer::Student, 'S', flavour, maxBottles);
-	prt.print(Printer::Student, 'V', vendingMachine->id);
+	prt.print(Printer::Student, 'V', vendingMachine->getId());
 
 }  // Student::constructor
 
@@ -57,14 +58,14 @@ void Student::action(){
 		}else if(status == VendingMachine::FUNDS){	// insufficient funds, add money
 
 			prt.print(Printer::Student, 't', 5);
-			cardOffice.transfer(id, 5, card);
+			cardOffice.transfer(id, 5, *card);
 			prt.print(Printer::Student, 'T', card->getBalance());
 			return;
 
 		}else{	// out of stock of favourate soda, change vending machine
 
 			vendingMachine = nameServer.getMachine(id);	// get a new machine
-			prt.print(Printer::Student, 'V', vendingMachine->id);
+			prt.print(Printer::Student, 'V', vendingMachine->getId());
 			return;
 
 		}
@@ -72,3 +73,4 @@ void Student::action(){
 	}
 
 }	// Student::action
+

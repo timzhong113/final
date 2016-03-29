@@ -1,6 +1,8 @@
 #ifndef WATCARDOFFICE_H
 #define WATCARDOFFICE_H
 
+#include "soda.h"
+
 class WATCardOffice {
 
   protected:
@@ -15,3 +17,4 @@ class WATCardOffice {
 };
 
 #endif
+

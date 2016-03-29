@@ -1,6 +1,9 @@
 #ifndef NAMESERVER_H
 #define NAMESERVER_H
 
+class VendingMachine;
+class Printer;
+
 class NameServer {
 
   protected:
@@ -13,8 +16,8 @@ class NameServer {
   	Printer &prt;
   	unsigned int numVendingMachines;
   	unsigned int numStudents;
-  	VendingMachine *machineList[numVendingMachines];
-    Distribution dtn[numStudents];  // distribute vending machines to students
+  	VendingMachine *machineList;
+	Distribution *dtn;  // distribute vending machines to students //////////////////////
 
   public:
 
@@ -25,3 +28,4 @@ class NameServer {
 };
 
 #endif
+
