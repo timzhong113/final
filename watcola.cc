@@ -4,6 +4,7 @@
 #include <vector>
 #include <limits>					// numeric_limits
 #include <cstdlib>					// exit
+#include <unistd.h> //getpid
 using namespace std;
 #include "PRNG.h"
 
@@ -57,7 +58,9 @@ void processConfigFile( const char *configFile, ConfigParms &cparms ) {
 	  if ( name.substr(0,1) != "#" ) break;
 	    in.ignore( numeric_limits<int>::max(), '\n' ); // ignore remainder of line
 	} // for
-	for ( posn = 0; posn < Parmnum && name != parms[posn].name; posn += 1 ); // linear search
+	for ( posn = 0; posn < Parmnum && name != parms[posn].name; posn += 1 )
+    ; // linear search
+
       if ( posn == Parmnum ) break;			// configuration not found ?
       if ( parms[posn].used ) break;			// duplicate configuration ?
 	in >> value;
