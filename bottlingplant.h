@@ -1,6 +1,8 @@
 #ifndef BOTTLINGPLANT
 #define BOTTLINGPLANT
 
+class Printer;
+class NameServer;
 class Truck;
 
 class BottlingPlant {

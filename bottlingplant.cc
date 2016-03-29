@@ -1,4 +1,7 @@
 #include "bottlingplant.h"
+#include "PRNG.h"
+#include "printer.h"
+#include "truck.h"
 
 extern PRNG prng;
 

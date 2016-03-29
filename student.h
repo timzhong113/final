@@ -1,7 +1,11 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include "soda.h"
+class Printer;
+class NameServer;
+class WATCardOffice;
+#include "watcard.h"
+class VendingMachine;
 
 class Student {
 

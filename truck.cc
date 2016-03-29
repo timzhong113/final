@@ -1,4 +1,8 @@
 #include "truck.h"
+#include "nameserver.h"
+#include "printer.h"
+#include "vendingmachine.h"
+#include "bottlingplant.h"
 
 Truck::Truck( Printer &prt, NameServer &nameServer, BottlingPlant &plant,
 	unsigned int numVendingMachines, unsigned int maxStockPerFlavour ):

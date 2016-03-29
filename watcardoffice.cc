@@ -1,4 +1,6 @@
 #include "watcardoffice.h"
+#include "PRNG.h"
+#include "printer.h"
 
 extern PRNG prng;
 

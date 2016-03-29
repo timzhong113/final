@@ -1,4 +1,6 @@
 #include "nameserver.h"
+#include "printer.h"
+#include "vendingmachine.h"
 
 NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, 
 	unsigned int numStudents ): prt(prt), numVendingMachines(numVendingMachines),
@@ -7,7 +9,14 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines,
 	for(  unsigned int i=0; i<numVendingMachines; i++ ){
 		machineList[i] = 0;
 	}
+	for( unsigned int j=0; j<numStudents; j++ ){
+		dtn[j] = 0;
+	}
 	prt.print(Printer::NameServer, 'S');		
+}
+
+NameServer::~NameServer(){
+	delete [] dtn;
 }
 
 void NameServer::VMregister( VendingMachine *vendingmachine ){
@@ -22,26 +31,26 @@ void NameServer::VMregister( VendingMachine *vendingmachine ){
 	}//for
 
 	for( unsigned int j=posn; j<numStudents; j+=numVendingMachines ){
-		dtn[j].mIndex = posn;
-		dtn[j].isDistributed = false;
+		dtn[j]->mIndex = posn;
+		dtn[j]->isDistributed = false;
 	}//for
 
-	prt.print(Printer::NameServer, 'R', vendingmachine->id);
+	prt.print(Printer::NameServer, 'R', vendingmachine->getId());
 }
 
 VendingMachine *NameServer::getMachine( unsigned int id ){
 
-	if( !dtn[id].isDistributed ){
+	if( !dtn[id]->isDistributed ){
 
-		dtn[id].isDistributed = true;
-		return machineList[dtn[id].mIndex];
+		dtn[id]->isDistributed = true;
+		return machineList[dtn[id]->mIndex];
 
 	}else{
 
-		if( dtn[id].mIndex == numVendingMachines-1 ) dtn[id].mIndex=0;
-		else dtn[id].mIndex++;
-		prt.print(Printer::NameServer, 'N', id, machineList[dtn[id].mIndex]->id);
-		return machineList[dtn[id].mIndex];
+		if( dtn[id]->mIndex == numVendingMachines-1 ) dtn[id]->mIndex=0;
+		else dtn[id]->mIndex++;
+		prt.print(Printer::NameServer, 'N', id, machineList[dtn[id]->mIndex]->getId());
+		return machineList[dtn[id]->mIndex];
 
 	}
 

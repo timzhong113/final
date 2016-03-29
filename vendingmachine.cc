@@ -1,4 +1,8 @@
 #include "vendingmachine.h"
+#include "PRNG.h"
+#include "printer.h"
+
+extern PRNG prng;
 
 VendingMachine::VendingMachine( Printer &prt, NameServer &nameServer, unsigned int id,
 	unsigned int sodaCost, unsigned int maxStockPerFlavour ): prt(prt), nameServer(nameServer),

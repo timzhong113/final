@@ -1,6 +1,8 @@
 #ifndef TRUCK_H
 #define TRUCK_H
 
+class Printer;
+class NameServer;
 class BottlingPlant;
 
 class Truck {

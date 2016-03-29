@@ -1,5 +1,6 @@
 #include "student.h"
 #include "PRNG.h"
+#include "printer.h"
 
 extern PRNG prng;
 

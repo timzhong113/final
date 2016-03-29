@@ -1,7 +1,7 @@
 #ifndef VENDINGMACHINE_H
 #define VENDINGMACHINE_H
 
-
+class Printer;
 class NameServer;
 
 class VendingMachine {                // general vending machine
