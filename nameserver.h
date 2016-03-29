@@ -13,7 +13,7 @@ class NameServer {
   	Printer &prt;
   	unsigned int numVendingMachines;
   	unsigned int numStudents;
-  	VendingMachine *machineList;
+  	VendingMachine *machineList[numVendingMachines];
     Distribution dtn[numStudents];  // distribute vending machines to students
 
   public:
