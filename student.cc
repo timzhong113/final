@@ -50,6 +50,7 @@ void Student::action(){
 
 		if(status == VendingMachine::BUY){	// buy successfully
 
+			curBottles++;
 			prt.print(Printer::Student, 'B', card->getBalance());
 			return;
 
