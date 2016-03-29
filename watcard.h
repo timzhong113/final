@@ -10,7 +10,7 @@ class WATCard {
   public:
   	
     WATCard() { balance = 0; }	// default constructor
-    addBalance(unsigned int amount) { this->balance += amount; }
+    addBalance(unsigned int amount) { balance += amount; }
 
 };
 

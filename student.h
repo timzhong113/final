@@ -9,9 +9,11 @@ class Student {
   	NameServer &nameServer;
   	WATCardOffice &cardOffice;
   	unsigned int id;
-  	unsigned int maxPurchases;
+    unsigned int maxBottles;
+    unsigned int curBottles;
   	WATCard *card;
   	VendingMachine::Flavours flavour;
+    VendingMachine *vendingMachine;
 
   public:
 
