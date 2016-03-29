@@ -11,6 +11,7 @@ class Truck {
   	unsigned int numVendingMachines;
   	unsigned int maxStockPerFlavour;
   	int cargo[4];
+    unsigned int totalSoda;
 
   public:
     Truck( Printer &prt, NameServer &nameServer, BottlingPlant &plant, 
