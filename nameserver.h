@@ -6,7 +6,7 @@ class NameServer {
   protected:
 
     struct Distribution{
-      unsigned int mid; // machine id
+      unsigned int mIndex; // machineList index
       bool isDistributed;  // true if the machined is already ditributed
     };
 
