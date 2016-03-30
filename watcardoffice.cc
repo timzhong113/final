@@ -1,11 +1,15 @@
 #include "watcardoffice.h"
 #include "PRNG.h"
 #include "printer.h"
+#include <iostream>
+
+using namespace std;
 
 extern PRNG prng;
 
 WATCardOffice::WATCardOffice( Printer &prt ): prt(prt){
 
+	cerr << "==== WATCardOffice::WATCardOffice" << endl;
 	prt.print(Printer::WATCardOffice, 'S');
 
 }
@@ -28,4 +32,5 @@ void WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard &ca
 	return;
 
 }
+
 

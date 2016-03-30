@@ -2,6 +2,8 @@
 #include "PRNG.h"
 #include "printer.h"
 #include "truck.h"
+#include <iostream>
+using namespace std;
 
 extern PRNG prng;
 
@@ -10,6 +12,8 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer,unsigned int 
 		unsigned int timeBetweenShipments ): prt(prt), nameServer(nameServer),
 		numVendingMachines(numVendingMachines), maxShippedPerFlavour(maxShippedPerFlavour),
 		maxStockPerFlavour(maxStockPerFlavour), timeBetweenShipments(timeBetweenShipments){
+
+		cerr << "==== BottlingPlant::BottlingPlant" << endl;
 
 		prt.print(Printer::BottlingPlant, 'S');
 		truck = new Truck(prt, nameServer, *this, numVendingMachines, maxStockPerFlavour);
@@ -60,4 +64,5 @@ void BottlingPlant::action(){
 	}
 
 }
+
 
