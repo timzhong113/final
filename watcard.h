@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+
 class WATCard {
 
   protected:
@@ -12,16 +13,12 @@ class WATCard {
 
   public:
   	
-    WATCard() { 
-	cerr << "==== WATcard()" << endl;
-	balance = 0; 
-    }	// default constructor
-    void addBalance(  unsigned int amount ) { balance += amount; }
+    WATCard() { balance = 0; }	// default constructor
     unsigned int getBalance() { return balance; }
+    void addBalance(  unsigned int amount ) { balance += amount; }
     void charge( unsigned int fee ) { balance -= fee; }
 
 };
 
+
 #endif
-
-

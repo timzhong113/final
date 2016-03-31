@@ -1,22 +1,22 @@
 #ifndef WATCARDOFFICE_H
 #define WATCARDOFFICE_H
 
-class Printer;
 #include "watcard.h"
+class Printer;
+
 
 class WATCardOffice {
 
-  protected:
+	protected:
+		Printer &prt;
 
-  	Printer &prt;
-
-  public:
+	public:
   	
-    WATCardOffice( Printer &prt );
-    WATCard *create( unsigned int sid, unsigned int amount );
-    void transfer( unsigned int sid, unsigned int amount, WATCard &card );
+    	WATCardOffice( Printer &prt );	// constructor
+    	WATCard *create( unsigned int sid, unsigned int amount );	// create a new watcard
+    	void transfer( unsigned int sid, unsigned int amount, WATCard &card );
+
 };
 
+
 #endif
-
-

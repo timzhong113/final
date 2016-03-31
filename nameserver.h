@@ -16,18 +16,19 @@ class NameServer {
   	Printer &prt;
   	unsigned int numVendingMachines;
   	unsigned int numStudents;
-  	VendingMachine **machineList;
-        Distribution *dtn;  // distribute vending machines to students
+
+  	VendingMachine **machineList;  // store vending machines in register order
+    Distribution *dtn;  // store distribution of vending machines
+
   public:
 
     NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents );
-
     ~NameServer();
-    void VMregister( VendingMachine *vendingmachine );
-    VendingMachine *getMachine( unsigned int id );
+
+    void VMregister( VendingMachine *vendingmachine );  // register the vending machine to name server
+    VendingMachine *getMachine( unsigned int id );  // student call getMachine to obtain a new machine
     VendingMachine **getMachineList();
+
 };
 
 #endif
-
-

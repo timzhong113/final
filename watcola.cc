@@ -4,11 +4,12 @@
 #include <vector>
 #include <limits>					// numeric_limits
 #include <cstdlib>					// exit
-#include <unistd.h> //getpid
-using namespace std;
+#include <unistd.h>                 //getpid
 #include "PRNG.h"
-
 #include "soda.h"					// YOUR INCLUDES GO IN THIS FILE
+
+using namespace std;
+
 
 PRNG prng( getpid() );					// default seed of random-number generator
 
@@ -23,7 +24,9 @@ struct ConfigParms {
     unsigned int timeBetweenShipments;			// length of time between shipment pickup
 }; // ConfigParms
 
+
 void processConfigFile( const char *configFile, ConfigParms &cparms );
+
 
 // Process the configuration file to set the parameters of the simulation.
 void processConfigFile( const char *configFile, ConfigParms &cparms ) {
@@ -79,6 +82,7 @@ void processConfigFile( const char *configFile, ConfigParms &cparms ) {
 } // processConfigFile
 
 
+
 static void shuffle( unsigned int set[], const int size ) {
     int i, p1, p2, temp;
 
@@ -95,6 +99,7 @@ static void shuffle( unsigned int set[], const int size ) {
 } // shuffle
 
 
+
 bool convert( int &val, char *buffer ) {		// convert C string to integer
     std::stringstream ss( buffer );			// connect stream and buffer
     ss >> dec >> val;					// convert integer from buffer
@@ -103,10 +108,13 @@ bool convert( int &val, char *buffer ) {		// convert C string to integer
 	string( buffer ).find_first_not_of( " ", ss.tellg() ) == string::npos;
 } // convert
 
+
+
 void usage( char *argv[] ) {
     cerr << "Usage: " << argv[0] << " [ config-file [ random-seed (1..N)] ]" << endl;
     exit( EXIT_FAILURE );
 } // usage
+
 
 
 int main( int argc, char *argv[] ) {
@@ -176,10 +184,9 @@ int main( int argc, char *argv[] ) {
     prt.print(Printer::Truck, 'F');
     prt.print(Printer::NameServer, 'F');
     prt.print(Printer::WATCardOffice, 'F');
+
 } // main
 
 // Local Variables: //
 // compile-command: "make" //
 // End: //
-
-
