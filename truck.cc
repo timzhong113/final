@@ -25,32 +25,37 @@ void Truck::action(){
 
 	VendingMachine **machineList = nameServer.getMachineList();
 
-
 	for( unsigned int i=0; i<numVendingMachines; i++ ){
+
+		if(totalSoda == 0) break;
 		unsigned int *stock = machineList[i]->inventory();
 		prt.print(Printer::Truck, 'd', machineList[i]->getId(), totalSoda);
 		unsigned int maxStock = maxStockPerFlavour*4;
-		unsigned int curStock = 0;
+		unsigned int curStock = *stock + *(stock+1) + *(stock+2) + *(stock+3);
 		unsigned int notReplenished;
 
 		for( unsigned int j=0; j<4; j++ ){
-			unsigned int demand = maxStockPerFlavour - *(stock+j);  ////////////////////////////
+			unsigned int demand = maxStockPerFlavour - *(stock+j);  
 			
 			cerr << totalSoda << endl;
 			cerr << *(stock+j) << " " << demand << " " << cargo[j] << endl;			
 			if( totalSoda == 0 ) break;
 
 			if( cargo[j] >= demand ){
+				curStock += demand;
 				*(stock+j) += demand;
 				cargo[j] -= demand;
 				totalSoda -= demand;
 			}else{
+				curStock += cargo[j];
 				*(stock+j) += cargo[j];
 				totalSoda -= cargo[j];
 				cargo[j] = 0;
 			}
-			curStock += *(stock+j);
+			//curStock += *(stock+j);
 		}//for
+
+		cerr << maxStock << " " << curStock << endl;
 
 		notReplenished = maxStock-curStock;
 		if( notReplenished != 0 ){
@@ -58,8 +63,9 @@ void Truck::action(){
 		}
 		prt.print(Printer::Truck, 'D', machineList[i]->getId(), totalSoda);
 		machineList[i]->restocked();
+		if( totalSoda == 0 ) break;
 	}//for
-
+	
 }
 
 

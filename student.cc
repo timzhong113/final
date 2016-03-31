@@ -49,8 +49,8 @@ void Student::action(){
 
 		if(card == 0){
 
-			card = cardOffice.create(id, 5);  // create a new card
 			prt.print(Printer::Student, id, 'D');
+			card = cardOffice.create(id, 5);  // create a new card
 
 		}
 
