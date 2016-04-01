@@ -9,13 +9,15 @@ class NameServer {
   protected:
 
     struct Distribution{
+      unsigned int sid;    // student id
       unsigned int mIndex; // machineList index
-      bool isDistributed;  // true if the machined is already ditributed
+      //bool isDistributed;  // true if the machined is already ditributed
     };
 
   	Printer &prt;
   	unsigned int numVendingMachines;
   	unsigned int numStudents;
+    unsigned int numStudentsRegister;
 
   	VendingMachine **machineList;  // store vending machines in register order
     Distribution *dtn;  // store distribution of vending machines

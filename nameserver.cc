@@ -20,6 +20,8 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned 
 
 	dtn = new Distribution[numStudents];
 
+	numStudentsRegister = 0;
+
 	prt.print(Printer::NameServer, 'S');		
 
 } // NameServer
@@ -54,9 +56,8 @@ void NameServer::VMregister( VendingMachine *vendingmachine ){
 
 	for( unsigned int j = posn; j < numStudents; j += numVendingMachines ){
 
-		cerr << j << endl;
 		dtn[j].mIndex = posn;
-		dtn[j].isDistributed = false;
+		//dtn[j].isDistributed = false;
 
 	} // for
 
@@ -67,23 +68,36 @@ void NameServer::VMregister( VendingMachine *vendingmachine ){
 
 VendingMachine *NameServer::getMachine( unsigned int id ){
 
-	if( !dtn[id].isDistributed ){	// if the student want to get his(her) first vending machine
-
-		dtn[id].isDistributed = true;
-		prt.print(Printer::NameServer, 'N', id, machineList[dtn[id].mIndex]->getId());
-
-		return machineList[dtn[id].mIndex];
+	if( numStudents != numStudentsRegister ){	// if the student want to get his(her) first vending machine
+		
+		dtn[numStudentsRegister].sid = id;
+		//dtn[numStudentsRegister].isDistributed = true;
+		prt.print(Printer::NameServer, 'N', id, machineList[dtn[numStudentsRegister].mIndex]->getId());
+		numStudentsRegister++;
+		return machineList[dtn[numStudentsRegister-1].mIndex];
 
 	}else{	// if the student want to change a new vending machine
 
-		if( dtn[id].mIndex == numVendingMachines - 1 ){  // if current vending machine is the last one
-			dtn[id].mIndex = 0;		// set the new vending machine to be the first one
+		/* get student's position in dtn */
+
+		unsigned int posn=0;
+		for( unsigned int i=0; i<numStudents; i++ ){
+		
+			if( dtn[i].sid == id ){
+				posn = i;
+				break;
+			}
+
+		}		
+		
+		if( dtn[posn].mIndex == numVendingMachines - 1 ){  // if current vending machine is the last one
+			dtn[posn].mIndex = 0;		// set the new vending machine to be the first one
 		}else{	// if current vending machine is not the last one
-			dtn[id].mIndex++;	// set the new vending machine to be the next one
+			dtn[posn].mIndex++;	// set the new vending machine to be the next one
 		}
 
-		prt.print(Printer::NameServer, 'N', id, machineList[dtn[id].mIndex]->getId());
-		return machineList[dtn[id].mIndex];
+		prt.print(Printer::NameServer, 'N', id, machineList[dtn[posn].mIndex]->getId());
+		return machineList[dtn[posn].mIndex];
 
 	}
 

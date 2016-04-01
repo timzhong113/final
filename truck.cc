@@ -75,7 +75,7 @@ void Truck::action() {
 		if( notReplenished != 0 ){	// not replenished
 			prt.print(Printer::Truck, 'U', machineList[i]->getId(), notReplenished);
 		}
-
+	
 		prt.print(Printer::Truck, 'D', machineList[i]->getId(), totalSoda);
 
 		machineList[i]->restocked();
