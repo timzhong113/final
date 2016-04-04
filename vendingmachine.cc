@@ -13,7 +13,9 @@ VendingMachine::VendingMachine( Printer &prt, NameServer &nameServer, unsigned i
 	unsigned int sodaCost, unsigned int maxStockPerFlavour ): prt(prt), nameServer(nameServer),
 	id(id), sodaCost(sodaCost), maxStockPerFlavour(maxStockPerFlavour) 
 {
-
+	for( unsigned int i=0; i<4; i++){//initialize stock
+		stock[i]=0;
+	}
 	prt.print(Printer::Vending, id, 'S', sodaCost);
 	nameServer.VMregister(this);	// register this vending machine to the name server
 

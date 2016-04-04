@@ -19,6 +19,10 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned 
 	}
 
 	dtn = new Distribution[numStudents];
+	for( unsigned int i=0; i<numStudents; i++){
+		dtn[i].sid = 0;
+		dtn[i].mIndex = 0;
+	}
 
 	numStudentsRegister = 0;
 
@@ -30,7 +34,7 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned 
 NameServer::~NameServer(){
 
 	delete [] machineList;
-
+	delete [] dtn;
 } // ~NameServer
 
 

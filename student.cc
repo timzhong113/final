@@ -11,7 +11,6 @@ Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffic
 	unsigned int maxPurchases ): prt(prt), nameServer(nameServer), cardOffice(cardOffice),id(id)
 {
 
-	// cerr << "==== Student::Student" << endl;
 
 	targetBottles = prng(1, maxPurchases);
 	currentBottles = 0;
@@ -47,7 +46,6 @@ Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffic
 
 void Student::action(){
 
-	// cerr << "==== Student::action" << endl;
 
 	if(currentBottles == targetBottles){	// a student has purchased enough soda
 
